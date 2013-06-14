@@ -1,0 +1,1 @@
+d:\MongoDB\mongod.exe --dbpath d:\MongoDB\blog_new

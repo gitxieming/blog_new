@@ -7,7 +7,9 @@ var express = require('express')
   , routes = require('./routes')
   , user = require('./routes/user')
   , http = require('http')
-  , path = require('path');
+  , path = require('path')
+  , MongoStore = require('connect-mongo')(express)
+  , settings = require('./settings');
 
 var app = express();
 
@@ -23,6 +25,17 @@ app.use(express.logger('dev'));
 app.use(express.bodyParser());
 //connect 内建的中间件，可以协助处理 POST 请求，伪装 PUT、DELETE 和其他 HTTP 方法
 app.use(express.methodOverride());
+//cookie解析的中间件
+app.use(express.cookieParser());
+//提供会话功能
+app.use(express.session({
+	secret: settings.cookieSecret,//防止篡改cookie
+	key: settings.db,
+	cookie: {maxAge: 1000*60*60*24*30}, //cookie生存期 30 days
+	store: new MongoStore({
+		db: settings.db //把会话存到数据库中
+	})
+}));
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 

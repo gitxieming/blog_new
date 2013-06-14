@@ -7,6 +7,8 @@
   },
   "dependencies": {
     "express": "3.2.4",
-    "ejs": "*"
+    "ejs": "*",
+    "mongodb":"*",
+    "connect-mongo":"*"//实现会话，将cooki存入mongo
   }
 }
