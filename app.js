@@ -9,7 +9,8 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , MongoStore = require('connect-mongo')(express)
-  , settings = require('./settings');
+  , settings = require('./settings')
+  , flase = require('connect-flash');
 
 var app = express();
 
@@ -17,6 +18,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
+app.use(flase());
 // app.use(express.favicon());
 app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 //在终端显示简单的不同颜色的日志
