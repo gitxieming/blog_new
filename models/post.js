@@ -108,7 +108,7 @@ Post.getOne = function(name, day, title, callback) {//获取一篇文章
             comment.content = markdown.toHTML(comment.content);
           });
         }
-        callback(null, doc);//返回特定查询的文章
+        callback(null, doc); //返回特定查询的文章
       });
     });
   });
