@@ -3,12 +3,6 @@
  * GET home page.
  */
 
-// exports.index = function(req, res){
-//   res.render('index', { 
-// 	  title: 'cleaning supplies',
-// 	  supplies: ['mop', 'sina', '<h1>baidu</h1>']
-//   });
-// };
 var crypto = require('crypto');
 var User = require('../models/user.js');
 var Post = require('../models/post.js');
